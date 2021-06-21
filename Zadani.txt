@@ -1,0 +1,11 @@
+Měření kondice sportovců
+Program bude hodnotit sportovce do příslušných kondičních tříd na základě určených parametrů
+(počet kliků, shybů, sklapovaček a času na 1km)
+Vstupem programu budou 3 textové soubory: 
+-soubor sportovců(číslo sportovce, jmeno, přijmeni, věk) 
+-soubor se záznamy výkonů v aktivitách(číslo sportovce,kliky,shyby, sklapovačky, čas)
+-soubor s bodovou tabulku pro jednotlivé aktivity
+
+výsledky lze vypsat buď podle abecedního pořádky podle přijmení,
+nebo podle dosažené kondiční skupiny
+  
