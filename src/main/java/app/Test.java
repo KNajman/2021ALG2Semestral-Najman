@@ -15,7 +15,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-
 /**
  *
  * @author najma
@@ -29,6 +28,14 @@ public class Test {
         Aspirants = new ArrayList<>();
     }
 
+    /**
+     * *
+     * load file with aspirants
+     *
+     * @param filename
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public void loadAspirants(File filename) throws FileNotFoundException, IOException {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
@@ -54,6 +61,12 @@ public class Test {
         }
     }
 
+    /**
+     * *
+     * find aspirants with unique number
+     * @param number
+     * @return
+     */
     private Aspirant findByNumber(int number) {
         for (Aspirant a : Aspirants) {
             if (a.getNumber() == number) {
@@ -62,7 +75,11 @@ public class Test {
         }
         throw new NoSuchElementException("Runner with number " + number + "does not exist.");
     }
-
+/***
+ * 
+ * @return data list to string
+ * 
+ */
     private String getResults() {
         StringBuilder sb = new StringBuilder();
         Aspirants.forEach(a -> {
@@ -70,22 +87,35 @@ public class Test {
         });
         return sb.toString();
     }
-
+/**
+ * 
+ * @return sorted list of Aspirants by points
+ */
     public String getAspirantsByPoints() {
         Collections.sort(Aspirants, Aspirant.BY_POINTS);
         return getResults();
     }
-
+/**
+ * 
+ * @return sorted list of Aspirants by name
+ */
     public String getAspirantsByName() {
         Collections.sort(Aspirants, Aspirant.BY_NAME);
         return getResults();
     }
-
+/**
+ * 
+ * @return sorted list of Aspirants by unique number
+ */
     public String getAspirantsByNumber() {
         Collections.sort(Aspirants);
         return getResults();
     }
-
+/***
+ * 
+ * @param resultFile
+ * @throws IOException 
+ */
     //ulozeni vysledku do textoveho souboru, oddelovaci znak je mezera
     public void saveResultsToText(File resultFile) throws IOException {
         Collections.sort(Aspirants, Aspirant.BY_POINTS);
@@ -98,7 +128,9 @@ public class Test {
             }
         }
     }
-
+/***
+ * 
+ */
     public void setPoints() {
         int points = 0;
         for (Aspirant a : Aspirants) {
@@ -107,9 +139,11 @@ public class Test {
 
     }
 
-    
+    /***
+     * 
+     */
         public void writeDownToJSON {
-     ObjectMapper objectMapper = new ObjectMapper();
+         ObjectMapper objectMapper = new ObjectMapper();
         // uožení do souboru
         try {
             objectMapper.writeValue(new File("file.json"), Test());

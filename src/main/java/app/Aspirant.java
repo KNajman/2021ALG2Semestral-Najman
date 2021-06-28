@@ -24,6 +24,19 @@ public class Aspirant implements Comparable<Aspirant> {
     int sitUps;
     private int pushUps;
 
+    /**
+     * *
+     * Constructor
+     *
+     * @param number
+     * @param name
+     * @param surname
+     * @param age
+     * @param timeOn1Km
+     * @param pullUps
+     * @param sitUps
+     * @param pushUps
+     */
     public Aspirant(int number, String name, String surname, int age, LocalTime timeOn1Km, int pullUps, int sitUps, int pushUps) {
         this.number = number;
         this.name = name;
@@ -35,46 +48,101 @@ public class Aspirant implements Comparable<Aspirant> {
         this.pushUps = pushUps;
     }
 
+    /**
+     * *
+     *
+     * @return time to run a kilometer
+     */
     public LocalTime getTimeOn1Km() {
         return timeOn1Km;
     }
 
+    /**
+     * *
+     *
+     * @return count of pull ups
+     */
     public int getPullUps() {
         return pullUps;
     }
 
+    /**
+     * *
+     *
+     * @return count of sit ups
+     */
     public int getSitUps() {
         return sitUps;
     }
 
+    /**
+     * *
+     *
+     * @return count of push ups
+     */
     public int getPushUps() {
         return pushUps;
     }
 
+    /**
+     * *
+     *
+     * @return unique number of aspirant
+     */
     public int getNumber() {
         return number;
     }
 
+    /**
+     * *
+     *
+     * @return first name of aspirant
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * *
+     *
+     * @return last name of aspirant
+     */
     public String getSurname() {
         return surname;
     }
 
+    /**
+     * *
+     *
+     * @return age of aspirant
+     */
     public int getAge() {
         return age;
     }
 
+    /**
+     * *
+     *
+     * @return points
+     */
     public int getPoints() {
         return points;
     }
 
+    /**
+     * *
+     *
+     * @param set points
+     */
     public void setPoints(int points) {
         this.points = points;
     }
 
+    /**
+     * *
+     *
+     * @return to String method
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -85,7 +153,11 @@ public class Aspirant implements Comparable<Aspirant> {
         sb.append(", body ").append(points);
         return sb.toString();
     }
-
+    
+    /**
+     *
+     *compare aspirants by points
+     */
     public static final Comparator<Aspirant> BY_POINTS
             = (Aspirant a1, Aspirant a2) -> a1.getPoints() - a2.getPoints();
 
@@ -101,11 +173,21 @@ public class Aspirant implements Comparable<Aspirant> {
         }
     };
 
+    /**
+     * *
+     * compare aspirants by unique number ascended
+     * @param o
+     * @return ascending order
+     */
     @Override
     public int compareTo(Aspirant o) {
         return this.number - o.number;
     }
 
+    /**
+     * *
+     * should compare time, better time less points
+     */
     public abstract class AspirantTimeComparator implements Comparator<Aspirant> {
 
         public int compare(Aspirant a, Scoring s) {
@@ -118,6 +200,10 @@ public class Aspirant implements Comparable<Aspirant> {
         }
     }
 
+    /**
+     * *
+     * should compare pull ups count, more ups less points
+     */
     public abstract class AspirantPullUpComparator implements Comparator<Aspirant> {
 
         public int compare(Aspirant a, Scoring s) {
@@ -130,6 +216,10 @@ public class Aspirant implements Comparable<Aspirant> {
         }
     }
 
+    /**
+     * *
+     * should compare push ups count, more ups less points
+     */
     public abstract class AspirantPushUpComparator implements Comparator<Aspirant> {
 
         public int compare(Aspirant a, Scoring s) {
@@ -142,6 +232,10 @@ public class Aspirant implements Comparable<Aspirant> {
         }
     }
 
+    /**
+     * *
+     * should compare sit ups count, more ups less points
+     */
     public abstract class AspirantSitUpsComparator implements Comparator<Aspirant> {
 
         public int compare(Aspirant a, Scoring s) {
