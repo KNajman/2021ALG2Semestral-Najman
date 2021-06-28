@@ -11,17 +11,17 @@ import java.util.Locale;
  * @author najma
  */
 public class Aspirant implements Comparable<Aspirant> {
+
     public static DateTimeFormatter dtfTime = DateTimeFormatter.ofPattern("mm:ss");
 
     private final int number;
     private String name;
     private String surname;
-    //private LocalDate born;
     private int age;
     private int points;
     private LocalTime timeOn1Km;
     private int pullUps;
-    private int sitUps;
+    int sitUps;
     private int pushUps;
 
     public Aspirant(int number, String name, String surname, int age, LocalTime timeOn1Km, int pullUps, int sitUps, int pushUps) {
@@ -34,7 +34,7 @@ public class Aspirant implements Comparable<Aspirant> {
         this.sitUps = sitUps;
         this.pushUps = pushUps;
     }
-    
+
     public LocalTime getTimeOn1Km() {
         return timeOn1Km;
     }
@@ -104,6 +104,54 @@ public class Aspirant implements Comparable<Aspirant> {
     @Override
     public int compareTo(Aspirant o) {
         return this.number - o.number;
+    }
+
+    public abstract class AspirantTimeComparator implements Comparator<Aspirant> {
+
+        public int compare(Aspirant a, Scoring s) {
+            for (int i = 0; i < s.getTimeOn1km().length; i++) {
+                if (a.getTimeOn1Km().isBefore(s.getTimeOn1km()[i])) {
+                    return i;
+                }
+            }
+            return s.getTimeOn1km().length - 1;
+        }
+    }
+
+    public abstract class AspirantPullUpComparator implements Comparator<Aspirant> {
+
+        public int compare(Aspirant a, Scoring s) {
+            for (int j = 0; j < s.getPullUps().length; j++) {
+                if (a.getPullUps() >= s.getPullUps()[j]) {
+                    return j;
+                }
+            }
+            return s.getPullUps().length - 1;
+        }
+    }
+
+    public abstract class AspirantPushUpComparator implements Comparator<Aspirant> {
+
+        public int compare(Aspirant a, Scoring s) {
+            for (int j = 0; j < s.getPushUps().length; j++) {
+                if (a.getPushUps() >= s.getPushUps()[j]) {
+                    return j;
+                }
+            }
+            return s.getPullUps().length - 1;
+        }
+    }
+
+    public abstract class AspirantSitUpsComparator implements Comparator<Aspirant> {
+
+        public int compare(Aspirant a, Scoring s) {
+            for (int j = 0; j < s.getSitUps().length; j++) {
+                if (a.sitUps >= s.getSitUps()[j]) {
+                    return j;
+                }
+            }
+            return s.getPullUps().length - 1;
+        }
     }
 
 }

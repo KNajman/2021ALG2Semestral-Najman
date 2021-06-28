@@ -11,4 +11,11 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <name>2021ALG2Semestral-Najman-Condition</name>
+    
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.11.1</version>
+    </dependency>
+    
 </project>

@@ -25,6 +25,22 @@ public class Scoring {
         this.pushUps = pushUps;
     }
 
+    public LocalTime[] getTimeOn1km() {
+        return timeOn1km;
+    }
+
+    public int[] getPullUps() {
+        return pullUps;
+    }
+
+    public int[] getSitUps() {
+        return sitUps;
+    }
+
+    public int[] getPushUps() {
+        return pushUps;
+    }
+     
     public void loadScoring(File filename) throws FileNotFoundException, IOException {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;

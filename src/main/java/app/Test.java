@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+
 /**
  *
  * @author najma
@@ -52,10 +53,6 @@ public class Test {
             }
         }
     }
-    
-    
-    
-    
 
     private Aspirant findByNumber(int number) {
         for (Aspirant a : Aspirants) {
@@ -99,6 +96,26 @@ public class Test {
                 s = String.format("%d %s %s %s", a.getNumber(), a.getName(), a.getSurname(), a.getPoints());
                 pw.println(s);
             }
+        }
+    }
+
+    public void setPoints() {
+        int points = 0;
+        for (Aspirant a : Aspirants) {
+            Colections.a.setPoints(points);
+        }
+
+    }
+
+    
+        public void writeDownToJSON {
+     ObjectMapper objectMapper = new ObjectMapper();
+        // uožení do souboru
+        try {
+            objectMapper.writeValue(new File("file.json"), Test());
+            System.out.println("MyObject uložen.");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
