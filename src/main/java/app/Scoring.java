@@ -25,7 +25,7 @@ public class Scoring {
         this.pushUps = pushUps;
     }
 
-    public void loadFitness(File filename) throws FileNotFoundException, IOException {
+    public void loadScoring(File filename) throws FileNotFoundException, IOException {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
             LocalTime timeOn1[] = new LocalTime[5];
